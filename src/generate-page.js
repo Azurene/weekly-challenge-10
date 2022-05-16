@@ -3,46 +3,65 @@ const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
 const Manager = require("../lib/Manager");
 
-const addEmployee = employeeInformation => {
-    let employeeCard = '';
-
-    employeeInformation.forEach(employee => {
-        const { name, id, role } = employee;
-        let newEmployee = '';
-        let extraInformation = '';
-
-        switch (role) {
-            case "Engineer":
-                newEmployee = new Engineer(name, id, employee.github);
-                extraInformation = newEmployee.getGitHub();
-                break;
-            case "Intern":
-                newEmployee = new Intern(name, id, employee.school);
-                extraInformation = newEmployee.getSchool();
-                break;
-            case "Manager":
-                newEmployee = new Manager(name, id, employee.officeNumber);
-                extraInformation = newEmployee.getOfficeNumber();
-                break;
-        };
-
-        employeeCard += `
-<article>
-        <div class="card">
-            <div class="card-title">
-                <h2>${newEmployee.getName()}</h2>
-                <h3>${newEmployee.getRole()}</h3>
-            </div>
-            <div class="card-content">
-                <p>${newEmployee.getId()}</p>
-                <p>${newEmployee.getEmail()}</p>
-                <p>${extraInformation}</p>
-            </div>
-        </div>
- </article>       
-        `
-    })
+const addEmployee = () => {
+    let employeesArr = [];
+    const information = 4;
+    for (i = 0; i < information; i++) {
+        if (title === "Manager") {
+            this.employee = new Manager(name, id, email, officeNumber, title);
+            employeesArr.push(employee);
+        } else if (title === "Intern") {
+            this.employee = new Intern(name, id, email, school, title);
+            employeesArr.push(employee);
+        } else if (title === "Engineer") {
+            this.employee = new Engineer(name, id, email, github, title);
+            employeesArr.push(employee);
+        }
+    }
 }
+
+// const addEmployee = employeeInformation => {
+//     let employeeCard = '';
+
+//     employeeInformation.forEach(employee => {
+
+//         const { name, id, role } = employee;
+//         let newEmployee = '';
+//         let extraInformation = '';
+
+//         switch (role) {
+//             case "Engineer":
+//                 newEmployee = new Engineer(name, id, employee.github);
+//                 extraInformation = newEmployee.getGitHub();
+//                 break;
+//             case "Intern":
+//                 newEmployee = new Intern(name, id, employee.school);
+//                 extraInformation = newEmployee.getSchool();
+//                 break;
+//             case "Manager":
+//                 newEmployee = new Manager(name, id, employee.officeNumber);
+//                 extraInformation = newEmployee.getOfficeNumber();
+//                 break;
+//         };
+
+//         employeeCard += `
+// <article>
+//         <div class="card">
+//             <div class="card-title">
+//                 <h2>${newEmployee.getName()}</h2>
+//                 <h3>${newEmployee.getRole()}</h3>
+//             </div>
+//             <div class="card-content">
+//                 <p>${newEmployee.getId()}</p>
+//                 <p>${newEmployee.getEmail()}</p>
+//                 <p>${extraInformation}</p>
+//             </div>
+//         </div>
+//  </article>       
+//         `
+//     });
+//     return employeeCard;
+// }
 
 const generatePage = data => {
     return `
@@ -69,4 +88,4 @@ const generatePage = data => {
 `
 }
 
-module.exports = generatePage;
+module.exports = generatePage

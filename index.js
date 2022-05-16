@@ -73,15 +73,15 @@ const questions = [
 
 const promptUser = () => {
     inquirer.prompt(questions)
-    .then(userResponse => {
-        employeesArr.push(userResponse);
+    // .then(userResponse => {
+    //     employeesArr.push(userResponse);
 
-        if (userResponse.addEmployee) {
-            return promptUser();
-        } else {
-            return employeesArr;
-        };
-    })
+    //     if (userResponse.addEmployee) {
+    //         return promptUser();
+    //     } else {
+    //         return employeesArr;
+    //     };
+    // })
     .then(data => generatePage(data))
     .then(htmlContent => createPage(htmlContent))
     .catch(err => console.log(err));
